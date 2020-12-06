@@ -12,19 +12,19 @@
 //import "noise.js"
 
 function setup() {
-  let wsize = 400;
-  let hsize = 400;
+  let wsize = 100;
+  let hsize = 100;
 
   createCanvas(wsize, hsize);
 
   background(255);
-  let mapGen = new MapGenerator(wsize, hsize, 0.05);
+  let mapGen = new MapGenerator(wsize, hsize, 10); // higher the scale the greateer the zoom in?
   let mapD = new MapDisplay();
 
   mapGen.GenerateMap();
-  //console.table(mapGen.noiseMap);
 
-   mapD.DrawNoiseMap(mapGen.noiseMap);
+
+  mapD.DrawNoiseMap(mapGen.noiseMap);
 }
 
 class Noise {
@@ -35,14 +35,14 @@ class Noise {
       noiseMap[i] = new Array(mapHeight);
     }
     //scale scales the x and y down to non int values. this is because noise is the same at all full interger values
-    if (scale <= 0) {
-      scale = 0.0001;
+    if (scale <= 4) {
+      scale = 5;
     }
 
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
-        let sampleX = x /// scale;
-        let sampleY = y /// scale;
+        let sampleX = x / scale;
+        let sampleY = y / scale;
 
         noiseMap[x][y] = noise(sampleX, sampleY);
       }
@@ -101,8 +101,8 @@ class MapDisplay {
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
         colorMap[y * mapWidth + x] = lerpColor(
-          color(0,0,0),
-          color(255),
+          color(0, 0, 0),
+          color(255, 0, 0),
           noiseMap[x][y]
         );
         //console.log()
