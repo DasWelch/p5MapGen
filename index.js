@@ -12,20 +12,19 @@
 //import "noise.js"
 
 function setup() {
-  let wsize = 10;
-  let hsize = 10;
+  let wsize = 400;
+  let hsize = 400;
 
   createCanvas(wsize, hsize);
 
   background(255);
-  let mapGen = new MapGenerator(wsize, hsize, 0.0005);
+  let mapGen = new MapGenerator(wsize, hsize, 0.05);
   let mapD = new MapDisplay();
 
-  
-   mapGen.GenerateMap();
-   console.table(mapGen.noiseMap)
+  mapGen.GenerateMap();
+  //console.table(mapGen.noiseMap);
 
-//   mapD.DrawNoiseMap(mapGen.noiseMap);
+   mapD.DrawNoiseMap(mapGen.noiseMap);
 }
 
 class Noise {
@@ -42,8 +41,8 @@ class Noise {
 
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
-        let sampleX = x / scale;
-        let sampleY = y / scale;
+        let sampleX = x /// scale;
+        let sampleY = y /// scale;
 
         noiseMap[x][y] = noise(sampleX, sampleY);
       }
@@ -53,27 +52,24 @@ class Noise {
   }
 }
 
-class Cell{
-    constructor(startx, starty, w, h, c){
-        this.xpos = startx;
-        this.ypos = starty;
-        this.w = w;
-        this.h = h;
-        this.color = c;
+class Cell {
+  constructor(startx, starty, w, h, c) {
+    this.xpos = startx;
+    this.ypos = starty;
+    this.w = w;
+    this.h = h;
+    this.color = c;
+  }
 
-    }
+  updateColor(c) {
+    this.color = c;
+  }
 
-    updateColor(c){
-        this.color = c
-    }
-
-    display(){
-        //console.log(this.color);
-        fill(this.color);
-        //stroke(0);
-        noStroke();
-        rect(this.xpos, this.ypos, this.w, this.h);
-    }
+  display() {
+    fill(this.color);
+    noStroke();
+    rect(this.xpos, this.ypos, this.w, this.h);
+  }
 }
 
 class Texture {
@@ -99,23 +95,21 @@ class MapDisplay {
   DrawNoiseMap(noiseMap) {
     const mapWidth = noiseMap[0].length;
     const mapHeight = noiseMap[1].length;
-
     this.texture = new Texture(mapWidth, mapHeight);
-
     let colorMap = new Array(mapWidth * mapHeight);
+
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
         colorMap[y * mapWidth + x] = lerpColor(
-          color(0),
+          color(0,0,0),
           color(255),
           noiseMap[x][y]
         );
+        //console.log()
       }
     }
 
     this.texture.setPixels(colorMap);
-
-    //console.log(this.texture);
 
     this.display();
   }
@@ -123,20 +117,18 @@ class MapDisplay {
   display() {
     let board = new Array(height * width);
 
-
     for (let y = 0; y < height; y++) {
-        for (let x = 0; x < width; x++) {
-            //console.log(this.texture.textureMap[y * width + x])
-            board[y * width + x] = new Cell(x,y,1,1,this.texture.textureMap[y * width + x]);
-            board[y * width + x].display();
-
-            //console.log("at board check: " + board[y * width + x]);
-        }
+      for (let x = 0; x < width; x++) {
+        board[y * width + x] = new Cell(
+          x,
+          y,
+          1,
+          1,
+          this.texture.textureMap[y * width + x]
+        );
+        board[y * width + x].display();
+      }
     }
-
-
-
-    //console.log("board: " + board);
   }
 }
 
