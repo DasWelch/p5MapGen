@@ -9,11 +9,11 @@
 // lacunarity directly controls the number of small features
 // persistance is like coherance, how much do these small features affect the cohesion of the whole map
 
-//import "noise.js"
-
 function setup() {
   let wsize = 400;
   let hsize = 400;
+
+  noiseSeed(50)
 
   createCanvas(wsize, hsize);
 
