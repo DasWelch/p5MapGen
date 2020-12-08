@@ -10,19 +10,18 @@
 // persistance is like coherance, how much do these small features affect the cohesion of the whole map
 
 function setup() {
-  let wsize = 400;
-  let hsize = 400;
+  let wsize = 500;
+  let hsize = 500;
 
   noiseSeed(50)
 
   createCanvas(wsize, hsize);
 
   background(255);
-  let mapGen = new MapGenerator(wsize, hsize, 100); // higher the scale the greateer the zoom in?
+  let mapGen = new MapGenerator(wsize, hsize, 100 ,1,1,1); // higher the scale the greateer the zoom in?
   let mapD = new MapDisplay();
 
   mapGen.GenerateMap();
-
 
   mapD.DrawNoiseMap(mapGen.noiseMap);
 }
