@@ -6,16 +6,24 @@ class Noise {
   static GenerateNoiseMap(
     mapWidth,
     mapHeight,
+    seed,
     scale,
     octaves,
     persistance,
-    lacunarity
+    lacunarity,
+    offset
   ) {
+
+    let preventmirror = createVector(10000,10000)
+
     let noiseMap = new Array(mapWidth);
 
     for (let i = 0; i < mapWidth; i++) {
       noiseMap[i] = new Array(mapHeight);
     }
+
+    noiseSeed(seed);
+
     //scale scales the x and y down to non int values. this is because noise is the same at all full interger values
     if (scale <= 0) {
       scale = 0.0001;
@@ -24,6 +32,9 @@ class Noise {
     let maxNoiseHeight = Number.MIN_VALUE;
     let minNoiseHeight = Number.MAX_VALUE;
 
+    let halfWidth = mapWidth / 2;
+    let halfHeight = mapHeight / 2;
+
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
         let amplitude = 1;
@@ -31,8 +42,8 @@ class Noise {
         let noiseHeight = 0;
 
         for (let oct = 0; oct < octaves; oct++) {
-          let sampleX = (x / scale) * frequency;
-          let sampleY = (y / scale) * frequency;
+          let sampleX = ((x-halfWidth) / scale) * frequency + offset.x + preventmirror.x;
+          let sampleY = ((y-halfHeight) / scale) * frequency + offset.y + preventmirror.y;
 
           let perlinValue = noise(sampleX, sampleY) * 2 - 1;
           noiseHeight += perlinValue * amplitude;
