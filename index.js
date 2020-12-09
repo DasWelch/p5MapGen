@@ -14,21 +14,15 @@ function setup() {
   let hsize = 500;
   let seed = 50
   let offset = createVector(0.0,0.0);
-  let scale= 63
+  let scale= 64
   let octaves= 1;
   let lacunarity = 1;
   let persistance = 1;
-
-
+  
   createCanvas(wsize, hsize);
-
-
-
   background(255);
   let mapGen = new MapGenerator(wsize, hsize,seed, scale ,octaves,lacunarity,persistance, offset); // higher the scale the greateer the zoom in?
-  let mapD = new MapDisplay();
-
   mapGen.GenerateMap();
 
-  mapD.DrawNoiseMap(mapGen.noiseMap);
+  
 }
