@@ -1,13 +1,14 @@
 class TextureGenerator {
   static TextureFromColorMap(colorMap, mapWidth, mapHeight) {
-    let texture = new texture(mapWidth, mapHeight);
+    let texture = new Texture(mapWidth, mapHeight);
     texture.setpixels(colorMap);
     return texture;
   }
 
   static TexturefromHeightMap(heightmap, mapWidth, mapHeight) {
-    //let texture = new texture(mapWidth, mapHeight);
+    let texture = new Texture(mapWidth, mapHeight);
     let colorMap = new Array(mapWidth * mapHeight);
+    colorMap.fill(color(255))
 
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
@@ -19,7 +20,7 @@ class TextureGenerator {
       }
     }
 
-    //texture.setpixels(colorMap);
+    texture.setPixels(colorMap);
     return colorMap;
   }
 }

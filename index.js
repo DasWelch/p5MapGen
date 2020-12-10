@@ -18,7 +18,7 @@ function setup() {
   let octaves= 1;
   let lacunarity = 1;
   let persistance = 1;
-  
+
   createCanvas(wsize, hsize);
   background(255);
   let mapGen = new MapGenerator(wsize, hsize,seed, scale ,octaves,lacunarity,persistance, offset); // higher the scale the greateer the zoom in?

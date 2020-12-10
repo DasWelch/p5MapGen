@@ -33,7 +33,7 @@ class MapGenerator {
       this.offset
     );
 
-    this.colorMap = new Array(this.noiseMap.length);
+    this.colorMap = new Array(this.mapWidth*this.mapHeight);
 
     for (let y = 0; y < this.mapHeight; y++) {
       for (let x = 0; x < this.mapWidth; x++) {
@@ -47,6 +47,6 @@ class MapGenerator {
       }
     }
 
-    mapD.DrawNoiseMap(this.noiseMap);
+    mapD.DrawTexture(this.noiseMap);
   }
 }

@@ -1,20 +1,10 @@
 class MapDisplay {
-    DrawNoiseMap(noiseMap) {
-      const mapWidth = noiseMap[0].length;
-      const mapHeight = noiseMap[1].length;
+    DrawTexture(map) { //2d noise map 
+      const mapHeight = map.length;
+      const mapWidth = map[0].length;
+      
       this.texture = new Texture(mapWidth, mapHeight);
-      let colorMap = new Array(mapWidth * mapHeight);
-  
-      for (let y = 0; y < mapHeight; y++) {
-        for (let x = 0; x < mapWidth; x++) {
-          colorMap[y * mapWidth + x] = lerpColor(
-            color(0, 0, 0),
-            color(255, 0, 0),
-            noiseMap[x][y]
-          );
-          //console.log()
-        }
-      }
+      let colorMap = TextureGenerator.TexturefromHeightMap(map, mapWidth, mapHeight);
   
       this.texture.setPixels(colorMap);
   
