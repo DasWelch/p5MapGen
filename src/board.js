@@ -1,4 +1,4 @@
-class Texture {
+class Board { // similar to texture but will create a an array of cells
     // might add this class after i figure out the mapper here
     constructor(w, h) {
       this.twidth = w;

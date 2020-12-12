@@ -48,5 +48,8 @@ class MapGenerator {
     }
 
     mapD.DrawTexture(this.noiseMap);
+
+    return this.noiseMap
   }
+
 }
