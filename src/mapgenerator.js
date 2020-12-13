@@ -20,7 +20,7 @@ class MapGenerator {
   }
 
   GenerateMap() {
-    let mapD = new MapDisplay();
+    let mapDisplay = new MapDisplay();
 
     this.noiseMap = Noise.GenerateNoiseMap(
       this.mapWidth,
@@ -33,23 +33,31 @@ class MapGenerator {
       this.offset
     );
 
-    // this.colorMap = new Array(this.mapWidth*this.mapHeight);
+    this.colorMap = new Array(this.mapWidth * this.mapHeight);
 
-    // for (let y = 0; y < this.mapHeight; y++) {
-    //   for (let x = 0; x < this.mapWidth; x++) {
-    //     let currentHeight = this.noiseMap[y][x];
-    //     for (let r = 0; r < regions.length; r++) {
-    //       if (currentHeight <= [r].height) {
-    //         colorMap[y * this.mapWidth + x] = regions[i].color; // need to create region
-    //         break;
-    //       }
-    //     }
-    //   }
-    // }
+    for (let y = 0; y < this.mapHeight; y++) {
+      for (let x = 0; x < this.mapWidth; x++) {
+        let currentHeight = this.noiseMap[y * this.mapWidth + x];
+        for (let r = 0; r < regions.length; r++) {
 
-    mapD.CreateTexture(this.noiseMap, this.mapWidth, this.mapHeight);
+          if (currentHeight <= regions[r].height) {
+            this.colorMap[y * this.mapWidth + x] = color(regions[r].color); // need to create region
+            break;
+          }
+        }
+      }
+    }
 
-    // console.log( this.noiseMap);
+    // mapDisplay.CreateTexture(this.noiseMap, this.mapWidth, this.mapHeight);
+    mapDisplay.CreateTexture(this.colorMap, this.mapWidth, this.mapHeight);
   }
-
 }
+
+regions = [
+  {
+    string: "land",
+    height: 1,
+    color: "#0cc952",
+  },
+  { string: "water", height: 0.4, color: "#0394fc" },
+];

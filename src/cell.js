@@ -5,6 +5,8 @@ class Cell {
       this.w = w;
       this.h = h;
       this.color = c;
+
+      // console.log(c)
     }
   
     updateColor(c) {

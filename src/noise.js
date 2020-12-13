@@ -13,10 +13,9 @@ class Noise {
     lacunarity,
     offset
   ) {
+    let preventmirror = createVector(10000 * mapWidth, 10000 * mapHeight);
 
-    let preventmirror = createVector(10000*mapWidth,10000*mapHeight);
-
-    let noiseMap = new Array(mapWidth*mapHeight);
+    let noiseMap = new Array(mapWidth * mapHeight);
 
     noiseSeed(seed);
 
@@ -38,8 +37,10 @@ class Noise {
         let noiseHeight = 0;
 
         for (let oct = 0; oct < octaves; oct++) {
-          let sampleX = ((x-halfWidth) / scale) * frequency + offset.x + preventmirror.x;
-          let sampleY = ((y-halfHeight) / scale) * frequency + offset.y + preventmirror.y;
+          let sampleX =
+            ((x - halfWidth) / scale) * frequency + offset.x + preventmirror.x;
+          let sampleY =
+            ((y - halfHeight) / scale) * frequency + offset.y + preventmirror.y;
 
           let perlinValue = noise(sampleX, sampleY) * 2 - 1;
           noiseHeight += perlinValue * amplitude;
@@ -55,21 +56,30 @@ class Noise {
           }
         }
 
-        noiseMap[y*width + x] = noiseHeight;
+        noiseMap[y * width + x] = noiseHeight;
       }
     }
-//normilzation loops
+    //normilzation loops
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
-        noiseMap[y*width + x] = inverseLerp(
+        noiseMap[y * width + x] = inverseLerp(
           minNoiseHeight,
           maxNoiseHeight,
-          noiseMap[y*width + x]
-        ); 
+          noiseMap[y * width + x]
+        );
       }
     }
 
     return noiseMap;
   }
-  
+
+  // static to2d(noiseMap, mapWidth, mapHeight) {
+  //   let noiseMap2d = Array.from(Array(mapWidth), () => Array(mapHeight));
+  //   console.log(noiseMap2d);
+  //   for (let y = 0; y < mapHeight; y++) {
+  //     for (let x = 0; x < mapWidth; x++) {
+  //       noiseMap2d[y][x] = noiseMap[y * width + x];
+  //     }
+  //   }
+  // }
 }
