@@ -14,13 +14,9 @@ class Noise {
     offset
   ) {
 
-    let preventmirror = createVector(10000,10000)
+    let preventmirror = createVector(10000*mapWidth,10000*mapHeight);
 
-    let noiseMap = new Array(mapWidth);
-
-    for (let i = 0; i < mapWidth; i++) {
-      noiseMap[i] = new Array(mapHeight);
-    }
+    let noiseMap = new Array(mapWidth*mapHeight);
 
     noiseSeed(seed);
 
@@ -59,20 +55,21 @@ class Noise {
           }
         }
 
-        noiseMap[x][y] = noiseHeight;
+        noiseMap[y*width + x] = noiseHeight;
       }
     }
-
+//normilzation loops
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
-        noiseMap[x][y] = inverseLerp(
+        noiseMap[y*width + x] = inverseLerp(
           minNoiseHeight,
           maxNoiseHeight,
-          noiseMap[x][y]
-        ); // need inverse lerp formula
+          noiseMap[y*width + x]
+        ); 
       }
     }
 
     return noiseMap;
   }
+  
 }

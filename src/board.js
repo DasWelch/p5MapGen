@@ -1,16 +1,22 @@
 class Board { // similar to texture but will create a an array of cells
     // might add this class after i figure out the mapper here
-    constructor(w, h) {
-      this.twidth = w;
-      this.theight = h;
+    constructor(x, y, w, h) {
+      this.y= y; 
+      this.x = x;
+      this.boardwidth = w;
+      this.boardheight = h;
   
-      this.textureMap = new Array(w * h);
+      this.cells = new Array(w * h);
     }
   
-    setPixels(colorMap) {
+    CreateCells(Map, scale) {
+      let cellsx, cellsy
+      cellsx, cellsy= map.length/scale;
+
+
       for (let y = 0; y < this.theight; y++) {
         for (let x = 0; x < this.twidth; x++) {
-          this.textureMap[y * this.twidth + x] = colorMap[y * this.twidth + x]; // using this could scale the 
+          this.cells[y * this.twidth + x] = colorMap[y * this.twidth + x]; // using this could scale the 
         }
       }
     }

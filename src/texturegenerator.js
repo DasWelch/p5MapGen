@@ -15,7 +15,7 @@ class TextureGenerator {
         colorMap[y * mapWidth + x] = lerpColor(
           color(0, 0, 0),
           color(0, 0, 255),
-          heightmap[x][y]
+          heightmap[y*mapWidth+x]
         );
       }
     }

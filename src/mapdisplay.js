@@ -1,11 +1,12 @@
 class MapDisplay {
-    DrawTexture(map) { //2d noise map 
-      const mapHeight = map.length;
-      const mapWidth = map[0].length;
+  CreateTexture(map, mapWidth, mapHeight) { //2d noise map 
+    //console.log (map)
       
       this.texture = new Texture(mapWidth, mapHeight);
       let colorMap = TextureGenerator.TexturefromHeightMap(map, mapWidth, mapHeight);
-  
+
+      //console.log(colorMap)
+
       this.texture.setPixels(colorMap);
   
       this.display();

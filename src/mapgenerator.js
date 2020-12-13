@@ -33,23 +33,23 @@ class MapGenerator {
       this.offset
     );
 
-    this.colorMap = new Array(this.mapWidth*this.mapHeight);
+    // this.colorMap = new Array(this.mapWidth*this.mapHeight);
 
-    for (let y = 0; y < this.mapHeight; y++) {
-      for (let x = 0; x < this.mapWidth; x++) {
-        let currentHeight = this.noiseMap[y][x];
-        for (let r = 0; r < regions.length; r++) {
-          if (currentHeight <= [r].height) {
-            colorMap[y * this.mapWidth + x] = regions[i].color; // need to create region
-            break;
-          }
-        }
-      }
-    }
+    // for (let y = 0; y < this.mapHeight; y++) {
+    //   for (let x = 0; x < this.mapWidth; x++) {
+    //     let currentHeight = this.noiseMap[y][x];
+    //     for (let r = 0; r < regions.length; r++) {
+    //       if (currentHeight <= [r].height) {
+    //         colorMap[y * this.mapWidth + x] = regions[i].color; // need to create region
+    //         break;
+    //       }
+    //     }
+    //   }
+    // }
 
-    mapD.DrawTexture(this.noiseMap);
+    mapD.CreateTexture(this.noiseMap, this.mapWidth, this.mapHeight);
 
-    return this.noiseMap
+    // console.log( this.noiseMap);
   }
 
 }
