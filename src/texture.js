@@ -2,7 +2,6 @@ class Texture {
   constructor(w, h) {
     this.textureWidth = w;
     this.textureHeight = h;
-
     this.textureMap = new Array(w * h);
   }
 

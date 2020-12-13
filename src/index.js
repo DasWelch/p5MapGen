@@ -10,9 +10,9 @@
 // persistance is like coherance, how much do these small features affect the cohesion of the whole map
 
 function setup() {
-  let wsize = 100;
-  let hsize = 100;
-  let seed = 50
+  let wsize = 1000;
+  let hsize = 1000;
+  let seed = -1
   let offset = createVector(0.0,0.0);
   let scale= 64
   let octaves= 1;

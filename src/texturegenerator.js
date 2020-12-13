@@ -1,7 +1,6 @@
 class TextureGenerator {
   static TextureFromColorMap(colorMap, mapWidth, mapHeight) {
     let texture = new Texture(mapWidth, mapHeight);
-    //console.log(colorMap)
     texture.setPixels(colorMap,mapWidth,mapHeight);
     return texture;
   }

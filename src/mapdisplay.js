@@ -1,10 +1,6 @@
 class MapDisplay {
   CreateTexture(map, mapWidth, mapHeight) { 
-
-      this.texture = TextureGenerator.TextureFromColorMap(map, mapWidth, mapHeight);
-
-//console.log(this.texture)
-  
+      this.texture = TextureGenerator.TextureFromColorMap(map, mapWidth, mapHeight);  
       this.display();
     }
   
