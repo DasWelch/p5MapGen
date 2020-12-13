@@ -11,7 +11,7 @@
 
 function setup() {
   let wsize = 1000;
-  let hsize = 1000;
+  let hsize = 800;
   let seed = -1
   let offset = createVector(0.0,0.0);
   let scale= 64
