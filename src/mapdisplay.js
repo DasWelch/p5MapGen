@@ -3,7 +3,7 @@ class MapDisplay {
 
       this.texture = TextureGenerator.TextureFromColorMap(map, mapWidth, mapHeight);
 
-
+//console.log(this.texture)
   
       this.display();
     }

@@ -17,8 +17,10 @@ class Noise {
 
     let noiseMap = new Array(mapWidth * mapHeight);
 
+    if(seed){
     noiseSeed(seed);
-
+    }
+    
     //scale scales the x and y down to non int values. this is because noise is the same at all full interger values
     if (scale <= 0) {
       scale = 0.0001;
