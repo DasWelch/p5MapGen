@@ -1,5 +1,6 @@
 class RegonalCell {
-    constructor(startx, starty, w, h, region) {
+    constructor(p5,startx, starty, w, h, region) {
+      this.p5 = p5
       this.xpos = startx;
       this.ypos = starty;
       this.w = w;
@@ -8,14 +9,15 @@ class RegonalCell {
     }
   
     display() {
-      fill(this.region.color);
-      noStroke();
-      rect(this.xpos, this.ypos, this.w, this.h);
+      this.p5.fill(this.region.color);
+      this.p5.noStroke();
+      this.p5.rect(this.xpos, this.ypos, this.w, this.h);
     }
   }
 
   class NoiseCell {
-    constructor(startx, starty, w, h, color) {
+    constructor(p5, startx, starty, w, h, color) {
+      this.p5 = p5
       this.xpos = startx;
       this.ypos = starty;
       this.w = w;

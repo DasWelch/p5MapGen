@@ -1,7 +1,8 @@
 class Board {
   // similar to texture but will create a an array of cells
   // might add this class after i figure out the mapper here
-  constructor(x, y, w, h, map) {
+  constructor(p5,x, y, w, h, map) {
+    this.p5 = p5
     this.y = y;
     this.x = x;
     this.boardWidth = w;
@@ -9,9 +10,9 @@ class Board {
 
     this.cells = new Array(w * h);
 
-    if (map) {
-      this.CreateCells(map);
-    }
+    // if (map) {
+    //   this.CreateCells(map);
+    // }
   }
 
   CreateCells(map, mapType, scale = 1) {
@@ -30,6 +31,7 @@ class Board {
         console.log(mapHeight);
 
         this.cells[y * this.boardWidth + x] = new NoiseCell(
+          this.p5,
           x * scale,
           y * scale,
           scale,
@@ -49,6 +51,7 @@ class Board {
         for (let r = 0; r < regions.length; r++) {
           if (currentHeight <= regions[r].height) {
             this.cells[y * this.boardWidth + x] = new RegonalCell(
+              this.p5,
               x * scale,
               y * scale,
               scale,

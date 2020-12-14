@@ -4,6 +4,7 @@ function inverseLerp(a, b, x) {
 
 class Noise {
   static GenerateNoiseMap(
+    p5,
     mapWidth,
     mapHeight,
     seed,
@@ -13,13 +14,14 @@ class Noise {
     lacunarity,
     offset
   ) {
-    let preventmirror = createVector(10000 * mapWidth, 10000 * mapHeight);
+    // console.log(p5)
+    let preventmirror = p5.createVector(10000 * mapWidth, 10000 * mapHeight);
 
     let noiseMap = new Array(mapWidth * mapHeight);
 
     //random seed if seed = -1
     if(seed !== -1){
-    noiseSeed(seed);
+    p5.noiseSeed(seed);
     }
 
     //scale scales the x and y down to non int values. this is because noise is the same at all full interger values
@@ -45,7 +47,7 @@ class Noise {
           let sampleY =
             ((y - halfHeight) / scale) * frequency + offset.y + preventmirror.y;
 
-          let perlinValue = noise(sampleX, sampleY) * 2 - 1;
+          let perlinValue = p5.noise(sampleX, sampleY) * 2 - 1;
           noiseHeight += perlinValue * amplitude;
 
           amplitude *= persistance;
@@ -59,16 +61,16 @@ class Noise {
           }
         }
 
-        noiseMap[y * width + x] = noiseHeight;
+        noiseMap[y * mapWidth + x] = noiseHeight;
       }
     }
     //normilzation loops
     for (let y = 0; y < mapHeight; y++) {
       for (let x = 0; x < mapWidth; x++) {
-        noiseMap[y * width + x] = inverseLerp(
+        noiseMap[y * mapWidth + x] = inverseLerp(
           minNoiseHeight,
           maxNoiseHeight,
-          noiseMap[y * width + x]
+          noiseMap[y * mapWidth + x]
         );
       }
     }

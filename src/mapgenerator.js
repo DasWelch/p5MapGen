@@ -1,5 +1,6 @@
 class MapGenerator {
   constructor(
+    _p5,
     _MapWidth,
     _mapHeight,
     _seed,
@@ -10,6 +11,7 @@ class MapGenerator {
     _offset,
     _displayType
   ) {
+    this.p5 = _p5,
     this.mapWidth = _MapWidth;
     this.mapHeight = _mapHeight;
     this.seed = _seed;
@@ -25,6 +27,7 @@ class MapGenerator {
 
 
     this.noiseMap = Noise.GenerateNoiseMap(
+      this.p5,
       this.mapWidth,
       this.mapHeight,
       this.seed,
@@ -36,7 +39,8 @@ class MapGenerator {
     );
 
 
-    this.board = new Board(0,0,this.mapWidth, this.mapHeight, this.noiseMap);
+    this.board = new Board(this.p5,0,0,this.mapWidth, this.mapHeight, this.noiseMap);
+    this.board.CreateCells(this.noiseMap);
     this.board.display();
 
  
