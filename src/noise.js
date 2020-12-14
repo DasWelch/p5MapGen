@@ -76,13 +76,4 @@ class Noise {
     return noiseMap;
   }
 
-  // static to2d(noiseMap, mapWidth, mapHeight) {
-  //   let noiseMap2d = Array.from(Array(mapWidth), () => Array(mapHeight));
-  //   console.log(noiseMap2d);
-  //   for (let y = 0; y < mapHeight; y++) {
-  //     for (let x = 0; x < mapWidth; x++) {
-  //       noiseMap2d[y][x] = noiseMap[y * width + x];
-  //     }
-  //   }
-  // }
 }

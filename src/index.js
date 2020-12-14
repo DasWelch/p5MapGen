@@ -10,8 +10,14 @@
 // persistance is like coherance, how much do these small features affect the cohesion of the whole map
 
 function setup() {
+  generateMap()
+
+  
+}
+
+function generateMap(){
   let wsize = 1000;
-  let hsize = 800;
+  let hsize = 500;
   let seed = -1
   let offset = createVector(0.0,0.0);
   let scale= 64
@@ -23,6 +29,4 @@ function setup() {
   background(255);
   let mapGen = new MapGenerator(wsize, hsize,seed, scale ,octaves,lacunarity,persistance, offset); // higher the scale the greateer the zoom in?
   mapGen.GenerateMap();
-
-  
 }
