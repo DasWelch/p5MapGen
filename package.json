@@ -1,15 +1,23 @@
 {
   "name": "p5mapgen",
   "version": "1.0.0",
-  "description": "",
+  "description": "A small web based map generator written in javascript and using the p5 library.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Zachery Welch",
   "license": "ISC",
   "dependencies": {
     "@types/p5": "^0.9.1",
     "p5": "^1.1.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DasWelch/p5MapGen.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DasWelch/p5MapGen/issues"
+  },
+  "homepage": "https://github.com/DasWelch/p5MapGen#readme"
 }
