@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@types/p5": "^0.9.1",
-    "p5": "^1.1.9"
+    "p5": "^1.2.0"
   },
   "repository": {
     "type": "git",

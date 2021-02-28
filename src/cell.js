@@ -26,8 +26,8 @@ class RegonalCell {
     }
   
     display() {
-      fill(this.color);
-      noStroke();
-      rect(this.xpos, this.ypos, this.w, this.h);
+      this.p5.fill(this.color);
+      this.p5.noStroke();
+      this.p5.rect(this.xpos, this.ypos, this.w, this.h);
     }
   }
