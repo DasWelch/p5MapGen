@@ -9,6 +9,7 @@ class RegonalCell {
     }
   
     display() {
+      // console.log(this.region)
       this.p5.fill(this.region.color);
       this.p5.noStroke();
       this.p5.rect(this.xpos, this.ypos, this.w, this.h);

@@ -28,7 +28,7 @@ class Board {
     for (let y = 0; y < this.boardHeight; y++) {
       for (let x = 0; x < this.boardWidth; x++) {
         let mapHeight = map[y * this.boardWidth + x];
-        console.log(mapHeight);
+        // console.log(mapHeight);
 
         this.cells[y * this.boardWidth + x] = new NoiseCell(
           this.p5,
@@ -47,6 +47,7 @@ class Board {
     for (let y = 0; y < this.boardHeight; y++) {
       for (let x = 0; x < this.boardWidth; x++) {
         let currentHeight = map[y * this.boardWidth + x];
+
 
         for (let r = 0; r < regions.length; r++) {
           if (currentHeight <= regions[r].height) {

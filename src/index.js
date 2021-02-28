@@ -12,7 +12,13 @@
 const canvasParentRef = document.getElementById("sketch-holder");
 w = 500;
 h = 500;
-let myp5
+let myp5;
+
+let water = new Region("water", 0.4, "#0394fc")
+let land = new Region("land", 0.8, "#0cc952")
+let mtn = new Region("mtn", 1.0, "#808080")
+
+let regions = [water, land, mtn]
 
 let sketch = function (p5) {
   console.log(p5);
