@@ -72,15 +72,3 @@ function generateNewMap(){
   generateMap(100, 100, myp5, canvasParentRef)
 }
 
-// setTimeout(() => {
-//   myp5.draw = (p5) => {
-//     myp5.rect(100,100,100,100)
-//     myp5.noLoop();
-//   };
-// }, 2000);
-
-console.log(myp5);
-
-//myp5 = new p5(sketch)
-
-// console.log(myp5);
