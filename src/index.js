@@ -3,22 +3,32 @@
 // frequency = lacunarity^n, where n is the number of octive your on minus 1
 // Lacunarity controls increase in frequency of octaves, length of each octive x axis
 
-
 // amplitude = persistance^n, where n is the number of octive your on minus 1
 // persistance controls decrease in amplitude of cotaves, the height up and down y axis
 
 // lacunarity directly controls the number of small features
 // persistance is like coherance, how much do these small features affect the cohesion of the whole map
 
-const canvasParentRef = document.getElementById('sketch-holder');
+const canvasParentRef = document.getElementById("sketch-holder");
 w = 500;
 h = 500;
+let myp5
 
 let sketch = function (p5) {
+  console.log(p5);
   p5.setup = function () {
+   
     makeCanvas(w, h, p5, canvasParentRef);
     generateMap(w, h, p5, canvasParentRef);
   };
+  p5.mouseClicked = () =>{
+    
+    if(p5.canvas !== 'undefined'){
+      
+      generateMap(100, 100, p5, canvasParentRef);
+      console.log(p5.canvas !== 'undefined')
+    }
+  }
 };
 
 function makeCanvas(w, h, p5, canvasParentRef) {
@@ -50,12 +60,27 @@ function generateMap(w, h, p5, canvasParentRef) {
   mapGen.GenerateMap();
 }
 
-console.log(sketch)
 
-let myp5 = new p5(sketch);
 
-console.log(myp5)
+console.log(p5);
 
-myp5 = new p5(sketch)
+// myp5 is just the p5 object that we would pass in or use in our sketch to call things like rect or elipse
+//if can be passed in just like that 
+myp5 = new p5(sketch);
+
+function generateNewMap(){
+  generateMap(100, 100, p5, canvasParentRef)
+}
+
+// setTimeout(() => {
+//   myp5.draw = (p5) => {
+//     myp5.rect(100,100,100,100)
+//     myp5.noLoop();
+//   };
+// }, 2000);
+
+console.log(myp5);
+
+//myp5 = new p5(sketch)
 
 // console.log(myp5);

@@ -20,8 +20,11 @@ class Noise {
     let noiseMap = new Array(mapWidth * mapHeight);
 
     //random seed if seed = -1
-    if(seed !== -1){
-    p5.noiseSeed(seed);
+    if (seed === -1) {
+      p5.noiseSeed(Date.now())
+    }
+    else{
+      p5.noiseSeed(seed);
     }
 
     //scale scales the x and y down to non int values. this is because noise is the same at all full interger values
@@ -48,6 +51,8 @@ class Noise {
             ((y - halfHeight) / scale) * frequency + offset.y + preventmirror.y;
 
           let perlinValue = p5.noise(sampleX, sampleY) * 2 - 1;
+          // console.log(perlinValue);
+
           noiseHeight += perlinValue * amplitude;
 
           amplitude *= persistance;
@@ -77,5 +82,4 @@ class Noise {
 
     return noiseMap;
   }
-
 }
