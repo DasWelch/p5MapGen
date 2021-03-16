@@ -27,14 +27,6 @@ let sketch = function (p5) {
     makeCanvas(w, h, p5, canvasParentRef);
     generateMap(w, h, p5, canvasParentRef);
   };
-  // p5.mouseClicked = () =>{
-    
-  //   if(p5.canvas !== 'undefined'){
-      
-  //     generateMap(100, 100, p5, canvasParentRef);
-  //     console.log(p5.canvas !== 'undefined')
-  //   }
-  // }
 };
 
 function makeCanvas(w, h, p5, canvasParentRef) {
